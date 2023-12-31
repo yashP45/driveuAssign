@@ -23,12 +23,18 @@ This React Native app allows users to track their location in the background usi
    ```bash
    git clone https://github.com/yashP45/driveuAssign.git
 
-2. Go into directory
+2. Change Branch
+
+   ```bash
+   git checkout development or git pull origin development
+
+
+3. Go into directory
 
    ```bash
    cd driveu
 
-3. Install dependencies:
+4. Install dependencies:
    ```bash
    npm install
 
