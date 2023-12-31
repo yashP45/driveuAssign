@@ -58,7 +58,7 @@ def enableProguardInReleaseBuilds = false
 
 /**
  * The preferred build flavor of JavaScriptCore (JSC)
- *
+ *that
  * For example, to use the international variant, you can use:
  * `def jscFlavor = 'org.webkit:android-jsc-intl:+'`
  *
@@ -89,6 +89,7 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        
     }
     buildTypes {
         debug {
@@ -106,9 +107,10 @@ android {
 
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
+    
+    implementation("com.mapbox.maps:android:10.16.2")
     implementation("com.facebook.react:react-android")
     implementation("com.facebook.react:flipper-integration")
-
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {

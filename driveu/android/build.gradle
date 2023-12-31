@@ -6,10 +6,23 @@ buildscript {
         targetSdkVersion = 34
         ndkVersion = "25.1.8937393"
         kotlinVersion = "1.8.0"
+        RNMapboxMapsVersion = '11.0.0'
     }
+   
     repositories {
         google()
         mavenCentral()
+          maven {
+            url 'https://api.mapbox.com/downloads/v2/releases/maven'
+            authentication {
+                basic(BasicAuthentication)
+            }
+            credentials {
+                username = 'mapbox'
+                // Use the secret token you generated in the last step.
+               password = project.properties['MAPBOX_DOWNLOADS_TOKEN'] ?: ""
+            }
+        }  
     }
     dependencies {
         classpath("com.android.tools.build:gradle")

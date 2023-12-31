@@ -1,8 +1,12 @@
 import React, { useEffect, useState} from 'react';
 import {
+  Button,
+  PermissionsAndroid,
+  StatusBar,
   StyleSheet,
   Text,
   View,
+  TouchableHighlight,
   TouchableOpacity,
 } from 'react-native';
 import RNLocation from 'react-native-location';
@@ -29,11 +33,12 @@ const App = () => {
   const options = {
     taskName: 'Location',
     taskTitle: 'Location Tracking in background',
-    taskDesc: 'Location is running....',
+    taskDesc: 'New Task',
     taskIcon: {
       name: 'ic_launcher',
       type: 'mipmap',
     },
+ 
     linkingURI: 'yourSchemeHere://chat/jane',
     parameters: {
       delay: 1000,
@@ -69,8 +74,6 @@ const App = () => {
     setSessionLocation([]);
   };
 
-
-
   const backgroundService = async () => {
     const granted = await RNLocation.requestPermission({
       ios: 'whenInUse',
@@ -84,21 +87,21 @@ const App = () => {
         },
       },
     });
-
     if (granted) {
         startUpdatingLocation();
-        await BackgroundService.start(startUpdatingLocation, options);
+        BackgroundService.start(startUpdatingLocation, options);
     }
   };
   const startUpdatingLocation = () => {
     const subscription = RNLocation.subscribeToLocationUpdates((locations) => {
       setLocation(locations[0]);
       setSessionLocation(prevLocations => [...prevLocations, locations[0]]);
+      BackgroundService.updateNotification({taskDesc: locations[0]?.latitude});
     });
 
     return () => {
       subscription();
-      setLocation([]);
+      setLocation(null);
     };
   };
 
