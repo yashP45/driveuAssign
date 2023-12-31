@@ -10,10 +10,10 @@ import Mapbox from '@rnmapbox/maps';
 import moment from 'moment';
 import BackgroundService from 'react-native-background-actions';
 import {setItem} from '../utils/asyncStorage';
-
 Mapbox.setAccessToken(
-  YOUR_MAPBOX_API_KEY,
+  'YOUR_MAPBOX_API_KEY',
 );
+// Mapbox.setConnected(true);
 
 const App = () => {
   const [location, setLocation] = useState([]);
@@ -21,7 +21,7 @@ const App = () => {
 
   useEffect(() => {
     Mapbox.setAccessToken(
-        YOUR_MAPBOX_API_KEY,
+      'YOUR_MAPBOX_API_KEY',
     );
   }, []);
 

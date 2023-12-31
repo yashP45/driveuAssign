@@ -1,5 +1,4 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import asyncStorageConstants from '../constants/asyncStorageConstants';
 
 const setItem = async (key, value) => {
   console.log(key, value, 'key-value-chat');
