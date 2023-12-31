@@ -10,19 +10,18 @@ import Mapbox from '@rnmapbox/maps';
 import moment from 'moment';
 import BackgroundService from 'react-native-background-actions';
 import {setItem} from '../utils/asyncStorage';
-Mapbox.setAccessToken(
-  'sk.eyJ1IjoieWFzaHA0NSIsImEiOiJjbHF0NGhqeHM0aWdmMnFycWtsdHdtYnBiIn0.CqOVqvzOSc5ES-WS_52xrw',
-);
-// Mapbox.setConnected(true);
 
-console.log(BackgroundService.isRunning())
+Mapbox.setAccessToken(
+  YOUR_MAPBOX_API_KEY,
+);
+
 const App = () => {
   const [location, setLocation] = useState([]);
   const [sessionLocation, setSessionLocation] = useState([]);
 
   useEffect(() => {
     Mapbox.setAccessToken(
-      'sk.eyJ1IjoieWFzaHA0NSIsImEiOiJjbHF0NGhqeHM0aWdmMnFycWtsdHdtYnBiIn0.CqOVqvzOSc5ES-WS_52xrw',
+        YOUR_MAPBOX_API_KEY,
     );
   }, []);
 
